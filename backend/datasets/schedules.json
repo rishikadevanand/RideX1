@@ -1,0 +1,50 @@
+[
+  {
+    "routeName": "Central Station to Airport Express",
+    "vehicleId": "METRO001",
+    "departureTime": "06:00",
+    "arrivalTime": "06:45",
+    "daysOfWeek": ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"],
+    "frequency": "daily"
+  },
+  {
+    "routeName": "Central Station to Airport Express",
+    "vehicleId": "METRO002",
+    "departureTime": "07:00",
+    "arrivalTime": "07:45",
+    "daysOfWeek": ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"],
+    "frequency": "daily"
+  },
+  {
+    "routeName": "City Center to IT Hub",
+    "vehicleId": "BUS001",
+    "departureTime": "07:30",
+    "arrivalTime": "08:30",
+    "daysOfWeek": ["monday", "tuesday", "wednesday", "thursday", "friday"],
+    "frequency": "weekdays"
+  },
+  {
+    "routeName": "City Center to IT Hub",
+    "vehicleId": "BUS002",
+    "departureTime": "08:00",
+    "arrivalTime": "09:00",
+    "daysOfWeek": ["monday", "tuesday", "wednesday", "thursday", "friday"],
+    "frequency": "weekdays"
+  },
+  {
+    "routeName": "University to Mall District",
+    "vehicleId": "BUS003",
+    "departureTime": "10:00",
+    "arrivalTime": "10:35",
+    "daysOfWeek": ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"],
+    "frequency": "daily"
+  },
+  {
+    "routeName": "Residential to Business District",
+    "vehicleId": "METRO003",
+    "departureTime": "07:00",
+    "arrivalTime": "07:20",
+    "daysOfWeek": ["monday", "tuesday", "wednesday", "thursday", "friday"],
+    "frequency": "weekdays"
+  }
+]

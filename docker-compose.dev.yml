@@ -1,0 +1,97 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:7.0
+    container_name: smart-ticket-mongodb
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: smart_ticket_tracker
+    volumes:
+      - mongodb_data:/data/db
+      - ./backend/datasets:/docker-entrypoint-initdb.d
+    networks:
+      - smart-ticket-network
+
+  redis:
+    image: redis:7.2-alpine
+    container_name: smart-ticket-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - smart-ticket-network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: smart-ticket-backend
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=development
+      - MONGODB_URI=mongodb://admin:password@mongodb:27017/smart_ticket_tracker?authSource=admin
+      - REDIS_URL=redis://redis:6379
+      - JWT_SECRET=your_super_secret_jwt_key_here_dev
+      - JWT_REFRESH_SECRET=your_super_secret_refresh_key_here_dev
+      - CLIENT_URL=http://localhost:3000
+      - FORECAST_SERVICE_URL=http://forecasting:5001
+    depends_on:
+      - mongodb
+      - redis
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    networks:
+      - smart-ticket-network
+
+  forecasting:
+    build:
+      context: ./forecasting
+      dockerfile: Dockerfile
+    container_name: smart-ticket-forecasting
+    restart: unless-stopped
+    ports:
+      - "5001:5001"
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./forecasting:/app
+      - /app/node_modules
+    networks:
+      - smart-ticket-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: smart-ticket-frontend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_API_URL=http://localhost:5000/api
+      - REACT_APP_SOCKET_URL=http://localhost:5000
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    networks:
+      - smart-ticket-network
+
+volumes:
+  mongodb_data:
+  redis_data:
+
+networks:
+  smart-ticket-network:
+    driver: bridge

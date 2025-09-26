@@ -1,0 +1,87 @@
+[
+  {
+    "email": "john.doe@example.com",
+    "password": "password123",
+    "firstName": "John",
+    "lastName": "Doe",
+    "phone": "+1234567890",
+    "role": "user",
+    "isEmailVerified": true,
+    "isActive": true,
+    "preferences": {
+      "language": "en",
+      "notifications": {
+        "email": true,
+        "sms": false
+      }
+    }
+  },
+  {
+    "email": "jane.smith@example.com",
+    "password": "password123",
+    "firstName": "Jane",
+    "lastName": "Smith",
+    "phone": "+1234567891",
+    "role": "user",
+    "isEmailVerified": true,
+    "isActive": true,
+    "preferences": {
+      "language": "en",
+      "notifications": {
+        "email": true,
+        "sms": true
+      }
+    }
+  },
+  {
+    "email": "raj.kumar@example.com",
+    "password": "password123",
+    "firstName": "Raj",
+    "lastName": "Kumar",
+    "phone": "+919876543210",
+    "role": "user",
+    "isEmailVerified": true,
+    "isActive": true,
+    "preferences": {
+      "language": "ta",
+      "notifications": {
+        "email": true,
+        "sms": false
+      }
+    }
+  },
+  {
+    "email": "priya.sharma@example.com",
+    "password": "password123",
+    "firstName": "Priya",
+    "lastName": "Sharma",
+    "phone": "+919876543211",
+    "role": "user",
+    "isEmailVerified": true,
+    "isActive": true,
+    "preferences": {
+      "language": "en",
+      "notifications": {
+        "email": true,
+        "sms": true
+      }
+    }
+  },
+  {
+    "email": "amit.patel@example.com",
+    "password": "password123",
+    "firstName": "Amit",
+    "lastName": "Patel",
+    "phone": "+919876543212",
+    "role": "user",
+    "isEmailVerified": true,
+    "isActive": true,
+    "preferences": {
+      "language": "en",
+      "notifications": {
+        "email": false,
+        "sms": true
+      }
+    }
+  }
+]

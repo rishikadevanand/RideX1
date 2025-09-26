@@ -1,0 +1,236 @@
+[
+  {
+    "name": "Central Station to Airport Express",
+    "description": "Fast express service connecting central station to international airport",
+    "transportType": "metro",
+    "startLocation": {
+      "name": "Central Station",
+      "coordinates": {
+        "lat": 12.9716,
+        "lng": 77.5946
+      }
+    },
+    "endLocation": {
+      "name": "Kempegowda International Airport",
+      "coordinates": {
+        "lat": 13.1979,
+        "lng": 77.7063
+      }
+    },
+    "stops": [
+      {
+        "name": "Central Station",
+        "coordinates": {
+          "lat": 12.9716,
+          "lng": 77.5946
+        },
+        "order": 1
+      },
+      {
+        "name": "Airport Terminal 1",
+        "coordinates": {
+          "lat": 13.1979,
+          "lng": 77.7063
+        },
+        "order": 2
+      }
+    ],
+    "distance": 35.2,
+    "estimatedDuration": 45,
+    "baseFare": 150,
+    "isActive": true,
+    "features": ["wifi", "ac", "charging"]
+  },
+  {
+    "name": "City Center to IT Hub",
+    "description": "Regular bus service connecting city center to major IT hub",
+    "transportType": "bus",
+    "startLocation": {
+      "name": "City Center",
+      "coordinates": {
+        "lat": 12.9716,
+        "lng": 77.5946
+      }
+    },
+    "endLocation": {
+      "name": "Electronic City",
+      "coordinates": {
+        "lat": 12.8456,
+        "lng": 77.6603
+      }
+    },
+    "stops": [
+      {
+        "name": "City Center",
+        "coordinates": {
+          "lat": 12.9716,
+          "lng": 77.5946
+        },
+        "order": 1
+      },
+      {
+        "name": "Koramangala",
+        "coordinates": {
+          "lat": 12.9279,
+          "lng": 77.6271
+        },
+        "order": 2
+      },
+      {
+        "name": "Electronic City",
+        "coordinates": {
+          "lat": 12.8456,
+          "lng": 77.6603
+        },
+        "order": 3
+      }
+    ],
+    "distance": 18.5,
+    "estimatedDuration": 60,
+    "baseFare": 25,
+    "isActive": true,
+    "features": ["ac"]
+  },
+  {
+    "name": "North Station to South Station",
+    "description": "Intercity train service connecting north and south stations",
+    "transportType": "train",
+    "startLocation": {
+      "name": "North Railway Station",
+      "coordinates": {
+        "lat": 13.0827,
+        "lng": 80.2707
+      }
+    },
+    "endLocation": {
+      "name": "South Railway Station",
+      "coordinates": {
+        "lat": 12.9716,
+        "lng": 77.5946
+      }
+    },
+    "stops": [
+      {
+        "name": "North Railway Station",
+        "coordinates": {
+          "lat": 13.0827,
+          "lng": 80.2707
+        },
+        "order": 1
+      },
+      {
+        "name": "Central Junction",
+        "coordinates": {
+          "lat": 12.9716,
+          "lng": 77.5946
+        },
+        "order": 2
+      },
+      {
+        "name": "South Railway Station",
+        "coordinates": {
+          "lat": 12.9716,
+          "lng": 77.5946
+        },
+        "order": 3
+      }
+    ],
+    "distance": 350.0,
+    "estimatedDuration": 300,
+    "baseFare": 450,
+    "isActive": true,
+    "features": ["ac", "charging", "wheelchair_accessible"]
+  },
+  {
+    "name": "University to Mall District",
+    "description": "Student-friendly bus route connecting university area to shopping district",
+    "transportType": "bus",
+    "startLocation": {
+      "name": "University Campus",
+      "coordinates": {
+        "lat": 12.9716,
+        "lng": 77.5946
+      }
+    },
+    "endLocation": {
+      "name": "Mall District",
+      "coordinates": {
+        "lat": 12.9716,
+        "lng": 77.5946
+      }
+    },
+    "stops": [
+      {
+        "name": "University Campus",
+        "coordinates": {
+          "lat": 12.9716,
+          "lng": 77.5946
+        },
+        "order": 1
+      },
+      {
+        "name": "Student Hostel Area",
+        "coordinates": {
+          "lat": 12.9716,
+          "lng": 77.5946
+        },
+        "order": 2
+      },
+      {
+        "name": "Mall District",
+        "coordinates": {
+          "lat": 12.9716,
+          "lng": 77.5946
+        },
+        "order": 3
+      }
+    ],
+    "distance": 12.3,
+    "estimatedDuration": 35,
+    "baseFare": 15,
+    "isActive": true,
+    "features": []
+  },
+  {
+    "name": "Residential to Business District",
+    "description": "Peak hour express service for commuters",
+    "transportType": "metro",
+    "startLocation": {
+      "name": "Residential Area",
+      "coordinates": {
+        "lat": 12.9716,
+        "lng": 77.5946
+      }
+    },
+    "endLocation": {
+      "name": "Business District",
+      "coordinates": {
+        "lat": 12.9716,
+        "lng": 77.5946
+      }
+    },
+    "stops": [
+      {
+        "name": "Residential Area",
+        "coordinates": {
+          "lat": 12.9716,
+          "lng": 77.5946
+        },
+        "order": 1
+      },
+      {
+        "name": "Business District",
+        "coordinates": {
+          "lat": 12.9716,
+          "lng": 77.5946
+        },
+        "order": 2
+      }
+    ],
+    "distance": 8.7,
+    "estimatedDuration": 20,
+    "baseFare": 30,
+    "isActive": true,
+    "features": ["wifi", "ac"]
+  }
+]

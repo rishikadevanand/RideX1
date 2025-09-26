@@ -1,0 +1,67 @@
+[
+  {
+    "userEmail": "john.doe@example.com",
+    "routeName": "Central Station to Airport Express",
+    "departureTime": "06:00",
+    "vehicleId": "METRO001",
+    "travelDate": "2024-01-15",
+    "seatNumber": "A1",
+    "fare": 150,
+    "status": "completed",
+    "paymentStatus": "paid",
+    "bookingReference": "ST001",
+    "specialRequests": "Window seat preferred"
+  },
+  {
+    "userEmail": "jane.smith@example.com",
+    "routeName": "City Center to IT Hub",
+    "departureTime": "07:30",
+    "vehicleId": "BUS001",
+    "travelDate": "2024-01-15",
+    "seatNumber": "B5",
+    "fare": 25,
+    "status": "completed",
+    "paymentStatus": "paid",
+    "bookingReference": "ST002",
+    "specialRequests": ""
+  },
+  {
+    "userEmail": "raj.kumar@example.com",
+    "routeName": "University to Mall District",
+    "departureTime": "10:00",
+    "vehicleId": "BUS003",
+    "travelDate": "2024-01-15",
+    "seatNumber": "C3",
+    "fare": 15,
+    "status": "completed",
+    "paymentStatus": "paid",
+    "bookingReference": "ST003",
+    "specialRequests": ""
+  },
+  {
+    "userEmail": "priya.sharma@example.com",
+    "routeName": "Residential to Business District",
+    "departureTime": "07:00",
+    "vehicleId": "METRO003",
+    "travelDate": "2024-01-15",
+    "seatNumber": "D8",
+    "fare": 30,
+    "status": "completed",
+    "paymentStatus": "paid",
+    "bookingReference": "ST004",
+    "specialRequests": ""
+  },
+  {
+    "userEmail": "amit.patel@example.com",
+    "routeName": "Central Station to Airport Express",
+    "departureTime": "07:00",
+    "vehicleId": "METRO002",
+    "travelDate": "2024-01-16",
+    "seatNumber": "A3",
+    "fare": 150,
+    "status": "completed",
+    "paymentStatus": "paid",
+    "bookingReference": "ST005",
+    "specialRequests": ""
+  }
+]

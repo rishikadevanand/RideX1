@@ -1,0 +1,25 @@
+{
+  "name": "smart-ticket-tracker",
+  "version": "1.0.0",
+  "description": "Full-stack Smart Ticket Tracker with forecasting capabilities",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run backend:dev\" \"npm run frontend:dev\" \"npm run forecast:dev\"",
+    "backend:dev": "cd backend && npm run dev",
+    "frontend:dev": "cd frontend && npm start",
+    "forecast:dev": "cd forecasting && npm run dev",
+    "build": "cd frontend && npm run build",
+    "test": "npm run backend:test && npm run frontend:test",
+    "backend:test": "cd backend && npm test",
+    "frontend:test": "cd frontend && npm test",
+    "seed": "cd backend && npm run seed",
+    "docker:dev": "docker-compose -f docker-compose.dev.yml up",
+    "docker:prod": "docker-compose -f docker-compose.prod.yml up"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "keywords": ["ticket", "tracker", "forecasting", "transport", "booking"],
+  "author": "Smart Ticket Tracker Team",
+  "license": "MIT"
+}
