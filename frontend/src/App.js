@@ -5,6 +5,7 @@ import { useAuth } from './contexts/AuthContext';
 import { useSocket } from './hooks/useSocket';
 import Navbar from './components/layout/Navbar';
 import Sidebar from './components/layout/Sidebar';
+import ProtectedRoute from './components/ProtectedRoute';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
@@ -65,24 +66,64 @@ function App() {
         }}
       >
         <Routes>
-          {/* Public Routes */}
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/booking" element={<Booking />} />
-          <Route path="/booking-history" element={<BookingHistory />} />
-          <Route path="/forecast" element={<Forecast />} />
-          <Route path="/profile" element={<Profile />} />
+          {/* Protected Routes */}
+          <Route path="/" element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          } />
+          <Route path="/booking" element={
+            <ProtectedRoute>
+              <Booking />
+            </ProtectedRoute>
+          } />
+          <Route path="/booking-history" element={
+            <ProtectedRoute>
+              <BookingHistory />
+            </ProtectedRoute>
+          } />
+          <Route path="/forecast" element={
+            <ProtectedRoute>
+              <Forecast />
+            </ProtectedRoute>
+          } />
+          <Route path="/profile" element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          } />
           
           {/* Admin Routes */}
-          {user.role === 'admin' && (
-            <>
-              <Route path="/admin" element={<AdminDashboard />} />
-              <Route path="/admin/routes" element={<RouteManagement />} />
-              <Route path="/admin/schedules" element={<ScheduleManagement />} />
-              <Route path="/admin/vehicles" element={<VehicleManagement />} />
-              <Route path="/admin/users" element={<UserManagement />} />
-              <Route path="/admin/analytics" element={<Analytics />} />
-            </>
-          )}
+          <Route path="/admin" element={
+            <ProtectedRoute requireAdmin>
+              <AdminDashboard />
+            </ProtectedRoute>
+          } />
+          <Route path="/admin/routes" element={
+            <ProtectedRoute requireAdmin>
+              <RouteManagement />
+            </ProtectedRoute>
+          } />
+          <Route path="/admin/schedules" element={
+            <ProtectedRoute requireAdmin>
+              <ScheduleManagement />
+            </ProtectedRoute>
+          } />
+          <Route path="/admin/vehicles" element={
+            <ProtectedRoute requireAdmin>
+              <VehicleManagement />
+            </ProtectedRoute>
+          } />
+          <Route path="/admin/users" element={
+            <ProtectedRoute requireAdmin>
+              <UserManagement />
+            </ProtectedRoute>
+          } />
+          <Route path="/admin/analytics" element={
+            <ProtectedRoute requireAdmin>
+              <Analytics />
+            </ProtectedRoute>
+          } />
           
           {/* Fallback */}
           <Route path="*" element={<Navigate to="/" />} />

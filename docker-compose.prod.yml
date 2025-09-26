@@ -1,104 +1,63 @@
 version: '3.8'
 
 services:
-  mongodb:
-    image: mongo:7.0
-    container_name: smart-ticket-mongodb-prod
-    restart: unless-stopped
-    ports:
-      - "27017:27017"
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USERNAME}
-      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD}
-      MONGO_INITDB_DATABASE: smart_ticket_tracker
-    volumes:
-      - mongodb_data:/data/db
-    networks:
-      - smart-ticket-network
-
-  redis:
-    image: redis:7.2-alpine
-    container_name: smart-ticket-redis-prod
-    restart: unless-stopped
-    ports:
-      - "6379:6379"
-    volumes:
-      - redis_data:/data
-    networks:
-      - smart-ticket-network
-
   backend:
     build:
       context: ./backend
       dockerfile: Dockerfile.prod
-    container_name: smart-ticket-backend-prod
+    container_name: smart-ticket-backend
     restart: unless-stopped
-    ports:
-      - "5000:5000"
     environment:
       - NODE_ENV=production
-      - MONGODB_URI=mongodb://${MONGO_ROOT_USERNAME}:${MONGO_ROOT_PASSWORD}@mongodb:27017/smart_ticket_tracker?authSource=admin
-      - REDIS_URL=redis://redis:6379
-      - JWT_SECRET=${JWT_SECRET}
-      - JWT_REFRESH_SECRET=${JWT_REFRESH_SECRET}
-      - CLIENT_URL=${CLIENT_URL}
-      - FORECAST_SERVICE_URL=http://forecasting:5001
-    depends_on:
-      - mongodb
-      - redis
+      - PORT=5000
+    env_file:
+      - .env
     networks:
       - smart-ticket-network
-
-  forecasting:
-    build:
-      context: ./forecasting
-      dockerfile: Dockerfile.prod
-    container_name: smart-ticket-forecasting-prod
-    restart: unless-stopped
-    ports:
-      - "5001:5001"
-    environment:
-      - NODE_ENV=production
-    networks:
-      - smart-ticket-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
   frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile.prod
-    container_name: smart-ticket-frontend-prod
+    container_name: smart-ticket-frontend
     restart: unless-stopped
     ports:
-      - "3000:80"
+      - "3000:3000"
     environment:
-      - REACT_APP_API_URL=${REACT_APP_API_URL}
-      - REACT_APP_SOCKET_URL=${REACT_APP_SOCKET_URL}
+      - NODE_ENV=production
+      - REACT_APP_API_URL=/api
     depends_on:
-      - backend
+      backend:
+        condition: service_healthy
     networks:
       - smart-ticket-network
-
-  nginx:
-    image: nginx:alpine
-    container_name: smart-ticket-nginx
-    restart: unless-stopped
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-      - ./nginx/ssl:/etc/nginx/ssl
-    depends_on:
-      - frontend
-      - backend
-      - forecasting
-    networks:
-      - smart-ticket-network
-
-volumes:
-  mongodb_data:
-  redis_data:
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
 networks:
   smart-ticket-network:
     driver: bridge
+
+volumes:
+  backend-logs:
+  frontend-logs:

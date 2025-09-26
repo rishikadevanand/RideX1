@@ -14,7 +14,11 @@
     "frontend:test": "cd frontend && npm test",
     "seed": "cd backend && npm run seed",
     "docker:dev": "docker-compose -f docker-compose.dev.yml up",
-    "docker:prod": "docker-compose -f docker-compose.prod.yml up"
+    "docker:prod": "docker-compose -f docker-compose.prod.yml up",
+    "prod": "docker-compose -f docker-compose.prod.yml up --build -d",
+    "prod:stop": "docker-compose -f docker-compose.prod.yml down",
+    "prod:logs": "docker-compose -f docker-compose.prod.yml logs -f",
+    "prod:clean": "docker-compose -f docker-compose.prod.yml down -v --rmi all"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"
